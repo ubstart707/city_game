@@ -22,24 +22,33 @@ let ifirst_char = random_city[random_city.length -1] //masalan bu a
 console.log("This a game CITY , let i start first\n" + random_city)
 console.log(ifirst_char)
 
+
+
+function enter(){
+    let data = document.getElementById("writed").value;
+    alert("salom sen "+ data + " so'zini kiritding")
+    user_wrote(data)
+}
+
+
+
+
 function user_wrote(name_c){
     const found = city_arrey.find(city => city === name_c.replace(/\s+/g, "").toLowerCase())
     
-    if(ifirst_char == found[0]){
-        if (found) {
-            console.log('okey you found')
-            city_arrey = city_arrey.filter(city => city !== found)
-            const last_char = found[found.length - 1]
-            const ifound = city_arrey.find(el => el.startsWith(last_char))
-            if (ifound){
-                console.log(ifound)
-                ifirst_char = ifound[ifound.length - 1] //masalan bu b 
-            } else {
-                console.log("you win")
-            }
+    if(found && ifirst_char == found[0]){
+    
+        console.log('okey you found')
+        city_arrey = city_arrey.filter(city => city !== found)
+        const last_char = found[found.length - 1]
+        const ifound = city_arrey.find(el => el.startsWith(last_char))
+        if (ifound){
+            console.log(ifound)
+            ifirst_char = ifound[ifound.length - 1] //masalan bu b 
         } else {
-            console.log('You lost hahahahahahah')
+            console.log("you win")
         }
+        
     } else {
         console.log('You lost hahahahahahah')
     } 
